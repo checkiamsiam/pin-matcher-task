@@ -13,9 +13,9 @@ for (const btn of calcBtn) {
       document.getElementById('confirm-field').value = '';
     }
     if (e.target.innerText == '<') {
-     var confirm = document.getElementById('confirm-field');
-       var  d = confirm.value.substring(0, confirm.value.length-2);
-        document.getElementById('confirm-field').value = d;
+      var confirm = document.getElementById('confirm-field');
+      var d = confirm.value.substring(0, confirm.value.length - 2);
+      document.getElementById('confirm-field').value = d;
     }
   })
 }
@@ -27,8 +27,9 @@ document.getElementById('submit-btn').addEventListener('click', function () {
     document.getElementById('wrong').style.display = 'block';
     document.getElementById('right').style.display = 'none';
     document.getElementById('trail-left').innerText = Number(document.getElementById('trail-left').innerText) - 1;
-    if (Number(document.getElementById('trail-left').innerText) < 0) {
-      document.getElementById('trail').innerText = 'generate pin again'
+    if (Number(document.getElementById('trail-left').innerText) < 1) {
+      document.getElementById('trail').innerText = 'generate pin again';
+      location.reload();
     }
   }
 })
