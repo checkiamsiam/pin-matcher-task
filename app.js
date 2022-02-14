@@ -4,6 +4,8 @@ document.getElementById('generate-btn').addEventListener('click', function () {
   var letter3 = String(Math.floor(Math.random() * 10));
   var letter4 = String(Math.floor(Math.random() * 10));
   document.getElementById('generate-field').value = letter1 + letter2 + letter3 + letter4;
+  document.getElementById('trail').style.display = 'block';
+  document.getElementById('trail').innerHTML = `<span id="trail-left">3</span> try left`;
 })
 var calcBtn = document.getElementsByClassName('button');
 for (const btn of calcBtn) {
@@ -21,15 +23,18 @@ for (const btn of calcBtn) {
 }
 document.getElementById('submit-btn').addEventListener('click', function () {
   if (document.getElementById('generate-field').value == document.getElementById('confirm-field').value) {
-    document.getElementById('right').style.display = 'block';
-    document.getElementById('wrong').style.display = 'none';
+    if (document.getElementById('confirm-field').value.length == 0) {
+      document.getElementById('trail').innerText = 'please! generate pin first.... ';
+    } else {
+      document.getElementById('right').style.display = 'block';
+      document.getElementById('wrong').style.display = 'none';
+    }
   } else {
     document.getElementById('wrong').style.display = 'block';
     document.getElementById('right').style.display = 'none';
     document.getElementById('trail-left').innerText = Number(document.getElementById('trail-left').innerText) - 1;
     if (Number(document.getElementById('trail-left').innerText) < 1) {
-      document.getElementById('trail').innerText = 'generate pin again';
-      location.reload();
+      document.getElementById('trail').innerText = 'generate pin again.... ';
     }
   }
 })
